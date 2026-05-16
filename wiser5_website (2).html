@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WISER – Women Integrating Sustainable Finance, Experience &amp; Research</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --burgundy: #6B1F3A;
+  --burgundy-light: #8B2F50;
+  --burgundy-pale: #F5ECF0;
+  --forest: #1E4030;
+  --forest-light: #2A5A44;
+  --forest-pale: #EAF2ED;
+  --gold: #B8932A;
+  --gold-pale: #FAF3E0;
+  --cream: #FAF8F5;
+  --ink: #1A1A1A;
+  --muted: #666;
+  --border: #E0D8D0;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--forest);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem; height: 60px;
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600; color: #fff; letter-spacing: 0.08em;
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a {
+  font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.75);
+  text-decoration: none; letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: #fff; }
+.nav-hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; }
+
+/* HERO */
+.hero { text-align: center; }
+.hero-cream {
+  background: var(--cream);
+  padding: 4rem 2.5rem 3.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.hero-dark {
+  background: var(--forest);
+  padding: 3.5rem 2.5rem 4.5rem;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(38px, 5.5vw, 62px); font-weight: 500;
+  color: #fff; line-height: 1.1; margin-bottom: 1.25rem;
+}
+.hero-title em { font-style: italic; color: #C8B89A; }
+.hero-sub {
+  font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.7);
+  max-width: 560px; margin: 0 auto 2.5rem; line-height: 1.75;
+}
+.hero-cta {
+  display: inline-block; padding: 0.75rem 2rem;
+  border: 1.5px solid rgba(255,255,255,0.5); color: #fff;
+  font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+  text-decoration: none; border-radius: 3px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.hero-cta:hover { background: rgba(255,255,255,0.08); border-color: #fff; }
+.hero-domain {
+  font-size: 11px; letter-spacing: 0.15em; color: rgba(255,255,255,0.3);
+  margin-top: 2.5rem;
+}
+
+/* DIVIDER */
+.divider-bar {
+  height: 4px;
+  background: linear-gradient(90deg, var(--burgundy) 0%, var(--gold) 50%, var(--forest) 100%);
+}
+
+/* SECTIONS */
+section { padding: 5rem 2.5rem; }
+section:nth-of-type(even) { background: #fff; }
+
+.section-label {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--burgundy); margin-bottom: 0.6rem;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 42px); font-weight: 500; line-height: 1.15;
+  color: var(--forest); margin-bottom: 1.5rem;
+}
+.section-body { font-size: 15px; line-height: 1.85; color: #444; max-width: 700px; }
+
+/* ABOUT */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; max-width: 960px;
+}
+.pillars { display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin-bottom: 1.5rem; }
+.pillar {
+  border-left: 3px solid var(--burgundy);
+  padding: 0.9rem 1.25rem;
+  background: var(--burgundy-pale);
+  border-radius: 0 6px 6px 0;
+}
+.pillar-title { font-size: 11px; font-weight: 500; color: var(--burgundy); margin-bottom: 0.25rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.pillar-body { font-size: 13px; color: #555; line-height: 1.6; }
+.mission-list { display: flex; flex-direction: column; gap: 0.55rem; }
+.mission-item { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 14px; color: #444; line-height: 1.6; }
+.mission-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-top: 8px; flex-shrink: 0; }
+
+/* FOUNDERS */
+.founders-intro { font-size: 15px; color: #555; line-height: 1.75; margin-bottom: 2.5rem; max-width: 680px; }
+.founders-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+.founder-card {
+  background: #fff; border: 0.5px solid var(--border);
+  border-radius: 10px; padding: 1.5rem 1.75rem;
+  border-top: 3px solid var(--forest);
+}
+.founder-card.advisor { border-top-color: var(--gold); }
+.founder-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 600; margin-bottom: 1rem;
+}
+.av-b { background: #E8EDF5; color: var(--forest); }
+.av-bl { background: var(--burgundy-pale); color: var(--burgundy); }
+.av-c { background: var(--forest-pale); color: var(--forest); }
+.av-d { background: var(--gold-pale); color: #8A6A10; }
+.av-v { background: #F0EAF5; color: #5A3080; }
+.founder-role { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--burgundy); margin-bottom: 0.25rem; }
+.founder-name { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 600; color: var(--forest); margin-bottom: 0.75rem; }
+.founder-bio { font-size: 13px; color: #555; line-height: 1.7; }
+.founder-link { display: inline-block; margin-top: 0.9rem; font-size: 12px; color: var(--forest); text-decoration: none; border-bottom: 1px solid var(--forest-light); padding-bottom: 1px; }
+.founder-link:hover { color: var(--burgundy); border-bottom-color: var(--burgundy); }
+.advisory-note {
+  margin-top: 2rem; padding: 1rem 1.5rem;
+  background: var(--gold-pale); border-left: 3px solid var(--gold);
+  border-radius: 0 6px 6px 0; font-size: 13px; color: #555; line-height: 1.7;
+  max-width: 680px;
+}
+
+/* WHAT WE DO */
+.what-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 900px; }
+.do-block h3 { font-family: 'Cormorant Garamond', serif; font-size: 21px; color: var(--forest); margin-bottom: 0.75rem; font-weight: 500; }
+.do-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.do-list li { font-size: 14px; color: #444; line-height: 1.65; padding-left: 1.1rem; position: relative; }
+.do-list li::before { content: '–'; position: absolute; left: 0; color: var(--burgundy); }
+
+/* MEMBERSHIP */
+.membership-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; max-width: 820px; }
+.mem-box { padding: 1.5rem 1.75rem; border-radius: 8px; border: 0.5px solid var(--border); }
+.mem-box.criteria { background: var(--forest-pale); border-color: #b3d1c2; }
+.mem-box.values { background: var(--burgundy-pale); border-color: #d4aaba; }
+.mem-box h3 { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem; }
+.mem-box.criteria h3 { color: var(--forest); }
+.mem-box.values h3 { color: var(--burgundy); }
+.mem-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+.mem-box ul li { font-size: 13px; color: #444; line-height: 1.6; padding-left: 1rem; position: relative; }
+.mem-box ul li::before { content: '·'; position: absolute; left: 0; font-size: 20px; line-height: 0.9; top: 2px; }
+.mem-box.criteria ul li::before { color: var(--forest); }
+.mem-box.values ul li::before { color: var(--burgundy); }
+.process-box {
+  margin-top: 2rem; padding: 1.5rem 1.75rem;
+  background: var(--forest-pale); border-radius: 8px; max-width: 620px;
+}
+.process-box p:first-child { font-size: 13px; font-weight: 500; color: var(--forest); margin-bottom: 0.5rem; }
+.process-box p:last-child { font-size: 13px; color: #444; line-height: 1.75; }
+
+/* CTA */
+.cta-section {
+  background: var(--burgundy);
+  padding: 5rem 2.5rem;
+  text-align: center;
+}
+.cta-section .section-title { color: #fff; }
+.cta-section p { font-size: 15px; color: rgba(255,255,255,0.75); max-width: 520px; margin: 0 auto 2.25rem; line-height: 1.75; }
+.cta-btn {
+  display: inline-block; padding: 0.8rem 2.25rem;
+  background: transparent; border: 1.5px solid rgba(255,255,255,0.6);
+  color: #fff; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; border-radius: 4px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.cta-btn:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+/* FOOTER */
+footer {
+  background: var(--ink); color: rgba(255,255,255,0.45);
+  padding: 2.5rem 2.5rem;
+  display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem;
+  font-size: 12px; line-height: 1.8;
+}
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: rgba(255,255,255,0.85); font-weight: 500; display: block; margin-bottom: 0.25rem; }
+footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+footer a:hover { color: rgba(255,255,255,0.85); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-links.open {
+    display: flex; flex-direction: column; position: absolute;
+    top: 60px; left: 0; right: 0; background: var(--forest);
+    padding: 1.5rem 2.5rem; gap: 1.25rem; z-index: 99;
+  }
+  section { padding: 3.5rem 1.5rem; }
+  nav { padding: 0 1.5rem; }
+  .hero-cream { padding: 3rem 1.5rem 2.5rem; }
+  .hero-dark { padding: 2.5rem 1.5rem 3.5rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .what-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .membership-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; }
+  .cta-section { padding: 3.5rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="#" style="text-decoration:none;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 52" height="38" role="img" aria-label="WISER in Sustainable Finance">
+      <text x="110" y="36" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="44" font-weight="600" letter-spacing="10" fill="#C8B89A">WISER</text>
+      <rect x="69" y="41" width="82" height="1.2" fill="#B8932A"/>
+      <text x="110" y="51" text-anchor="middle" font-family="'DM Sans','Helvetica Neue',Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="2.5" fill="rgba(255,255,255,0.45)">IN SUSTAINABLE FINANCE</text>
+    </svg>
+  </a>
+  <div class="nav-links" id="nav-links">
+    <a href="#about">About</a>
+    <a href="#founders">Founders</a>
+    <a href="#what">What we do</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#publications">Publications</a>
+    <a href="#membership">Membership</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="hero">
+
+  <!-- CREAM BAND: burgundy logo -->
+  <div class="hero-cream">
+    <div style="display:flex; justify-content:center;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 96" height="96" role="img" aria-label="WISER in Sustainable Finance">
+        <text x="240" y="66" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="82" font-weight="600" letter-spacing="18" fill="#6B1F3A">WISER</text>
+        <rect x="152" y="74" width="176" height="2" fill="#B8932A"/>
+        <text x="240" y="91" text-anchor="middle" font-family="'DM Sans','Helvetica Neue',Arial,sans-serif" font-size="10" font-weight="400" letter-spacing="4" fill="#1E4030">IN SUSTAINABLE FINANCE</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- FOREST BAND: tagline + CTA -->
+  <div class="hero-dark">
+    <h1 class="hero-title">Where expertise<br>meets <em>conviction</em></h1>
+    <p class="hero-sub">An international circle of senior women shaping sustainable finance at the intersection of research, policy, and practice.</p>
+    <a class="hero-cta" href="#contact">Get in touch</a>
+    <p class="hero-domain">wiserinsustainablefinance.com</p>
+  </div>
+
+</div>
+<div class="divider-bar"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">About</p>
+  <h2 class="section-title">A circle built on trust,<br>rigour &amp; shared purpose</h2>
+  <div class="about-grid">
+    <div>
+      <p class="section-body">WISER is an international, independent circle of experienced professional women who combine real-world responsibility with intellectual leadership across sustainability-related fields.</p>
+      <p class="section-body" style="margin-top:1rem;">Our members come from academia and professional practice, with expertise spanning sustainable finance, ESG, governance, law, risk, audit, public policy, impact investing, and climate strategy.</p>
+      <p class="section-body" style="margin-top:1rem;">The idea for WISER emerged organically from the 2026 Sustainable and Impact Investments International Conference (SIIC) in Hamburg, where we met as peers and recognised the value of creating a trusted, visible, and credible platform together.</p>
+    </div>
+    <div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-title">Visibility</div>
+          <div class="pillar-body">Amplifying senior women experts in sustainable finance worldwide.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-title">Credibility</div>
+          <div class="pillar-body">Peer exchange, research-informed dialogue, and collective standards.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-title">Influence</div>
+          <div class="pillar-body">Building presence across policy, academia, and financial markets.</div>
+        </div>
+      </div>
+      <p style="font-size:13px;font-weight:500;color:var(--forest);margin-bottom:0.6rem;">WISER is built on</p>
+      <div class="mission-list">
+        <div class="mission-item"><div class="mission-dot"></div><span>Trust, intellectual integrity, and mutual respect</span></div>
+        <div class="mission-item"><div class="mission-dot"></div><span>Long-term ambition with light bureaucracy</span></div>
+        <div class="mission-item"><div class="mission-dot"></div><span>Voluntary, flexible, and scalable participation</span></div>
+        <div class="mission-item"><div class="mission-dot"></div><span>English as working language, international in scope</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDERS -->
+<section id="founders">
+  <p class="section-label">People</p>
+  <h2 class="section-title">Founding Council</h2>
+  <p class="founders-intro">WISER is led by a Founding Council of four senior women, each bringing a distinct professional and academic vantage point. Dr. Brigitte Bernard-Rau serves as Chair for the initial phase.</p>
+  <div class="founders-grid">
+
+    <div class="founder-card">
+      <div class="founder-avatar av-b">BB</div>
+      <div class="founder-role">Chair · Founding Member</div>
+      <div class="founder-name">Dr. Brigitte Bernard-Rau, LL.M.</div>
+      <div class="founder-bio">Lecturer and researcher at the School of Business, Economics and Social Sciences, University of Hamburg. Her research focuses on sustainable finance, ESG ratings, impact investing, and corporate social responsibility. Former ESG analyst at oekom research AG (now ISS ESG) and Head of International Business Development in Paris. PhD in Management Science from Radboud University (Nijmegen). Editor of <em>Sustainability Stories</em> (Springer, 2024).</div>
+      <a class="founder-link" href="https://www.linkedin.com/in/brigitte-bernard-rau-phd-ll-m-madrid-a457964/" target="_blank" rel="noopener">LinkedIn profile →</a>
+    </div>
+
+    <div class="founder-card">
+      <div class="founder-avatar av-bl">BE</div>
+      <div class="founder-role">Founding Member · Madrid</div>
+      <div class="founder-name">Dr. Blanca Escribano-Cañas</div>
+      <div class="founder-bio">Business lawyer specialised in technology and sustainability. After nearly 30 years at international law firms (Jones Day, DLA Piper, Bird &amp; Bird, CMS, EY Law), Blanca now lectures at Carlos III University of Madrid and sits on the Advisory Board of its European Law LLM. PhD in Advanced European Studies in Human Rights. Her doctoral thesis, published by Dykinson (2025), proposes a governance model for AI within organisations integrating ESG and AI legal frameworks. Founder of BE LAW &amp; ETHICS, S.L. CEN/CENELEC JTC 21 AI Committee member.</div>
+      <a class="founder-link" href="https://www.linkedin.com/in/blancaescribano/" target="_blank" rel="noopener">LinkedIn profile →</a>
+    </div>
+
+    <div class="founder-card">
+      <div class="founder-avatar av-c">CM</div>
+      <div class="founder-role">Founding Member · Lisbon</div>
+      <div class="founder-name">Clarisse Heck Machado</div>
+      <div class="founder-bio">Experienced financial professional and former portfolio manager at a leading Brazilian pension fund, where she led the development of ESG assessments for investment analysis. Currently a consultant and researcher at the University of Porto, and voluntary researcher at gFis (UFRJ, Brazil). PhD candidate in Business and Management Studies (University of Porto) focused on sustainability-linked bonds. Holds an MBA from PUC-Rio and a master's in administration from IBMEC. Presents at international sustainable finance conferences.</div>
+      <a class="founder-link" href="https://www.linkedin.com/in/clarisse-heck-machado-3a6289/" target="_blank" rel="noopener">LinkedIn profile →</a>
+    </div>
+
+    <div class="founder-card">
+      <div class="founder-avatar av-d">DR</div>
+      <div class="founder-role">Founding Member</div>
+      <div class="founder-name">Dina Rato</div>
+      <div class="founder-bio">GRC and finance senior advisor with over 20 years of international experience in financial auditing, internal audit, risk management, and corporate governance. Former roles at KPMG, Deloitte, TMF Group, Warner Bros., and Harsco. Holds professional qualifications across Portugal, Brazil, and the US (CPA, Statutory Auditor) and certifications in internal audit (CIA, EQA), risk management (CRMA, ISO 31000), and data privacy (CIPP/E). Currently pursuing a PhD in ESG. Board member and non-executive director.</div>
+      <a class="founder-link" href="https://www.linkedin.com/in/dina-rato-roc-cpa-cia-crma/" target="_blank" rel="noopener">LinkedIn profile →</a>
+    </div>
+
+  </div>
+
+  <div style="margin-top:4rem;">
+    <p class="section-label">Advisory Board</p>
+    <h2 class="section-title" style="font-size:clamp(24px,3vw,32px);margin-bottom:1.5rem;">Advisors</h2>
+    <div class="founders-grid" style="max-width:320px;">
+      <div class="founder-card advisor">
+        <div class="founder-avatar av-v">VL</div>
+        <div class="founder-role">Advisor</div>
+        <div class="founder-name">Valeria Lionetti</div>
+        <div class="founder-bio">Senior economist at Banca d'Italia (Bank of Italy). Valeria brings deep institutional expertise in financial regulation, monetary policy, and sustainability from within a central banking context. As an advisor to WISER, she contributes her cross-sector perspective to the network's strategic and research directions.</div>
+      </div>
+    </div>
+    <div class="advisory-note">
+      The Advisory Board will grow over time. WISER welcomes nominations of senior women with expertise in research or practice who share our values and commitment to sustainable finance.
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section id="what">
+  <p class="section-label">Activities</p>
+  <h2 class="section-title">What WISER does</h2>
+  <div class="what-grid">
+    <div class="do-block">
+      <h3>Peer exchange &amp; thought leadership</h3>
+      <ul class="do-list">
+        <li>High-level peer exchange across policy, academia, and financial institutions</li>
+        <li>Structured knowledge-sharing at regular virtual meetings</li>
+        <li>Thought leadership posts and statements</li>
+        <li>Participation in international conferences and panels</li>
+      </ul>
+    </div>
+    <div class="do-block">
+      <h3>Research &amp; advisory</h3>
+      <ul class="do-list">
+        <li>Bridging professional expertise and academic insight</li>
+        <li>Collaboration across research and practice</li>
+        <li>Positioning members as trusted advisors to organisations</li>
+        <li>Speaking engagements, advisory roles, boards, and high-level committees</li>
+      </ul>
+    </div>
+    <div class="do-block">
+      <h3>Mentoring</h3>
+      <ul class="do-list">
+        <li>Internal mentoring among founding and future members</li>
+        <li>External mentoring of the next generation of scholar-practitioners</li>
+        <li>Supporting women combining doctoral studies with professional roles</li>
+      </ul>
+    </div>
+    <div class="do-block">
+      <h3>What WISER is not</h3>
+      <ul class="do-list">
+        <li>Not a formal legal entity (at this stage)</li>
+        <li>Not a commercial consultancy firm</li>
+        <li>Not a time-consuming obligation — participation is voluntary and scalable</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <p class="section-label">Expertise</p>
+  <h2 class="section-title">Areas of expertise</h2>
+  <p class="section-body">WISER members bring complementary depth across the full spectrum of sustainable finance — from legal and regulatory frameworks to financial markets, governance, and research methodology.</p>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:1rem; margin-top:2.5rem; max-width:960px;">
+
+    <div style="padding:1.25rem 1.5rem; border-top:2px solid var(--forest); background:#fff; border-radius:0 0 8px 8px;">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--forest);margin-bottom:0.6rem;">Sustainable Finance</div>
+      <p style="font-size:13px;color:#555;line-height:1.65;">ESG integration, impact investing, sustainability-linked bonds, green finance instruments, and ESG ratings.</p>
+    </div>
+
+    <div style="padding:1.25rem 1.5rem; border-top:2px solid var(--forest); background:#fff; border-radius:0 0 8px 8px;">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--forest);margin-bottom:0.6rem;">Governance &amp; Ethics</div>
+      <p style="font-size:13px;color:#555;line-height:1.65;">Corporate governance, AI ethics, business ethics, ESG reporting, and organisational sustainability management.</p>
+    </div>
+
+    <div style="padding:1.25rem 1.5rem; border-top:2px solid var(--burgundy); background:#fff; border-radius:0 0 8px 8px;">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--burgundy);margin-bottom:0.6rem;">Law &amp; Regulation</div>
+      <p style="font-size:13px;color:#555;line-height:1.65;">Technology law, AI regulation, EU legal frameworks, financial regulation, data privacy, and cybersecurity law.</p>
+    </div>
+
+    <div style="padding:1.25rem 1.5rem; border-top:2px solid var(--burgundy); background:#fff; border-radius:0 0 8px 8px;">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--burgundy);margin-bottom:0.6rem;">Risk &amp; Audit</div>
+      <p style="font-size:13px;color:#555;line-height:1.65;">Internal audit, risk management frameworks, GRC, compliance, financial reporting, and internal controls.</p>
+    </div>
+
+    <div style="padding:1.25rem 1.5rem; border-top:2px solid var(--gold); background:#fff; border-radius:0 0 8px 8px;">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#8A6A10;margin-bottom:0.6rem;">Public Policy</div>
+      <p style="font-size:13px;color:#555;line-height:1.65;">Financial policymaking, ESG disclosure regulation, sustainability transitions, and cross-sector regulatory dialogue.</p>
+    </div>
+
+    <div style="padding:1.25rem 1.5rem; border-top:2px solid var(--gold); background:#fff; border-radius:0 0 8px 8px;">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#8A6A10;margin-bottom:0.6rem;">Research &amp; Academia</div>
+      <p style="font-size:13px;color:#555;line-height:1.65;">ESG measurement, impact assessment, sustainability reporting, bibliometric research, and doctoral supervision.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications" style="background:#fff;">
+  <p class="section-label">Publications</p>
+  <h2 class="section-title">Selected publications</h2>
+  <p class="section-body" style="margin-bottom:2.5rem;">A selection of recent academic and professional contributions by WISER members across sustainable finance, governance, AI ethics, and ESG.</p>
+
+  <div style="display:flex; flex-direction:column; gap:1rem; max-width:820px;">
+
+    <div style="padding:1.25rem 1.5rem; border-left:3px solid var(--forest); background:var(--forest-pale); border-radius:0 8px 8px 0;">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--forest);margin-bottom:0.4rem;">Brigitte Bernard-Rau</div>
+      <p style="font-size:14px;color:var(--ink);line-height:1.6;margin-bottom:0.3rem;">Busch, T., Bernard-Rau, B., &amp; Brosche, H. (2025). Assessing company sustainability impact: Status quo and way ahead. <em>Journal of Industrial Ecology.</em> <a href="https://doi.org/10.1111/jiec.70065" target="_blank" rel="noopener" style="color:var(--forest);font-size:12px;">doi.org/10.1111/jiec.70065</a></p>
+    </div>
+
+    <div style="padding:1.25rem 1.5rem; border-left:3px solid var(--forest); background:var(--forest-pale); border-radius:0 8px 8px 0;">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--forest);margin-bottom:0.4rem;">Brigitte Bernard-Rau</div>
+      <p style="font-size:14px;color:var(--ink);line-height:1.6;margin-bottom:0.3rem;"><em>Sustainability Stories — The Power of Narratives to Understand Global Challenges.</em> Springer Nature Switzerland, 2024. <a href="https://doi.org/10.1007/978-3-031-52300-7" target="_blank" rel="noopener" style="color:var(--forest);font-size:12px;">doi.org/10.1007/978-3-031-52300-7</a></p>
+    </div>
+
+    <div style="padding:1.25rem 1.5rem; border-left:3px solid var(--forest); background:var(--forest-pale); border-radius:0 8px 8px 0;">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--forest);margin-bottom:0.4rem;">Brigitte Bernard-Rau</div>
+      <p style="font-size:14px;color:var(--ink);line-height:1.6;">Bernard-Rau, B. and Freiling, J. (forthcoming). Sustainability Disclosure Regulations in the EU: An Enabling Factor for Impact Investors? <em>Sustainability Accounting, Management and Policy Journal.</em></p>
+    </div>
+
+    <div style="padding:1.25rem 1.5rem; border-left:3px solid var(--burgundy); background:var(--burgundy-pale); border-radius:0 8px 8px 0;">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--burgundy);margin-bottom:0.4rem;">Blanca Escribano-Cañas</div>
+      <p style="font-size:14px;color:var(--ink);line-height:1.6;margin-bottom:0.3rem;"><em>Ethical Governance of Artificial Intelligence within Organisations.</em> Dykinson, 2025. ISBN 979-13-7006-904-9</p>
+    </div>
+
+    <div style="padding:1.25rem 1.5rem; border-left:3px solid var(--burgundy); background:var(--burgundy-pale); border-radius:0 8px 8px 0;">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--burgundy);margin-bottom:0.4rem;">Blanca Escribano-Cañas</div>
+      <p style="font-size:14px;color:var(--ink);line-height:1.6;">Escribano Cañas, B.E. (2024). Navigating Artificial Intelligence Governance Challenges in Organizations. In Bernard-Rau, B. (ed.) <em>Sustainability Stories.</em> Springer. <a href="https://doi.org/10.1007/978-3-031-52300-7_28" target="_blank" rel="noopener" style="color:var(--burgundy);font-size:12px;">doi.org/10.1007/978-3-031-52300-7_28</a></p>
+    </div>
+
+    <div style="padding:1.25rem 1.5rem; border-left:3px solid #8A6A10; background:var(--gold-pale); border-radius:0 8px 8px 0;">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#8A6A10;margin-bottom:0.4rem;">Clarisse Heck Machado</div>
+      <p style="font-size:14px;color:var(--ink);line-height:1.6;">Machado, C., Sousa, M., Branco, M. (2025). How do climate risks influence the pricing of European Sustainability-Linked Bonds? <em>Sustainable and Impact Investments International Conference — 9th Edition (SIIC 2026, University of Hamburg).</em></p>
+    </div>
+
+    <div style="padding:1.25rem 1.5rem; border-left:3px solid #8A6A10; background:var(--gold-pale); border-radius:0 8px 8px 0;">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#8A6A10;margin-bottom:0.4rem;">Clarisse Heck Machado</div>
+      <p style="font-size:14px;color:var(--ink);line-height:1.6;">Machado, C., Sousa, M., Branco, M. (2024). Sustainability-linked bonds research: a bibliometric and content analysis review. <em>SESTEF Conference, Paris Sorbonne, December 2024.</em></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section id="membership">
+  <p class="section-label">Membership</p>
+  <h2 class="section-title">A select, invitation-based circle</h2>
+  <p class="section-body">WISER prioritises quality, relevance, and complementarity of profiles over scale. Membership is designed to ensure a high level of expertise, trust, and intellectual contribution.</p>
+  <div class="membership-grid">
+    <div class="mem-box criteria">
+      <h3>Who we look for</h3>
+      <ul>
+        <li>Senior professional experience in finance, policy, academia, or related fields</li>
+        <li>Doctoral degree (completed or in progress), or equivalent research engagement</li>
+        <li>Cross-sector perspective — spanning disciplines and operational realities</li>
+        <li>International exposure across jurisdictions or regulatory environments</li>
+        <li>Engagement with sustainable finance, governance, or systemic risk</li>
+      </ul>
+    </div>
+    <div class="mem-box values">
+      <h3>What we value</h3>
+      <ul>
+        <li>Intellectual rigour and independence of thought</li>
+        <li>Discretion and trustworthiness</li>
+        <li>Willingness to contribute to collective exchange</li>
+        <li>Long-term commitment to sustainability-related issues</li>
+        <li>Trust, integrity, and mutual respect</li>
+      </ul>
+    </div>
+  </div>
+  <div class="process-box">
+    <p>Selection process</p>
+    <p>Expression of interest or nomination → Profile review → Internal discussion among founding members → Invitation to join. Membership is not automatic and is reviewed on a case-by-case basis.</p>
+  </div>
+</section>
+
+<!-- CONTACT / CTA -->
+<div class="cta-section" id="contact">
+  <p class="section-label" style="color:rgba(255,255,255,0.5);">Get involved</p>
+  <h2 class="section-title">Join the circle</h2>
+  <p>If you are an experienced professional woman engaged in or having completed doctoral research related to sustainability, governance, ethics, or impact, we invite you to reach out.</p>
+  <a class="cta-btn" href="/cdn-cgi/l/email-protection#d5bcbbb3ba95a2bca6b0a7bcbba6a0a6a1b4bcbbb4b7b9b0b3bcbbb4bbb6b0fbb6bab8"><span class="__cf_email__" data-cfemail="a5cccbc3cae5d2ccd6c0d7cccbd6d0d6d1c4cccbc4c7c9c0c3cccbc4cbc6c08bc6cac8">[email&#160;protected]</span></a>
+</div>
+
+<footer>
+  <div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 52" height="36" role="img" aria-label="WISER in Sustainable Finance" style="display:block; margin-bottom:0.5rem;">
+      <text x="110" y="36" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="44" font-weight="600" letter-spacing="10" fill="rgba(255,255,255,0.8)">WISER</text>
+      <rect x="69" y="41" width="82" height="1.2" fill="#B8932A"/>
+      <text x="110" y="51" text-anchor="middle" font-family="'DM Sans','Helvetica Neue',Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="2.5" fill="rgba(255,255,255,0.35)">IN SUSTAINABLE FINANCE</text>
+    </svg>
+    <span>Women Integrating Sustainable Finance, Experience &amp; Research</span>
+  </div>
+  <div style="text-align:right;">
+    <div><a href="/cdn-cgi/l/email-protection#01686f676e417668726473686f7274727560686f60636d6467686f606f62642f626e6c"><span class="__cf_email__" data-cfemail="3f565159507f48564c5a4d56514c4a4c4b5e56515e5d535a5956515e515c5a115c5052">[email&#160;protected]</span></a></div>
+    <div style="margin-top:4px;">wiserinsustainablefinance.com</div>
+    <div style="margin-top:8px;font-size:11px;opacity:0.5;">&copy; 2026 WISER in Sustainable Finance</div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-c
